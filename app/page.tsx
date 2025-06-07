@@ -190,7 +190,7 @@ export default function Home() {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-accent px-8 py-6 text-lg font-semibold rounded-2xl transition-all duration-300"
+                      className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-accent px-8 py-6 text-lg font-semibold rounded-2xl transition-all duration-300"
                     >
                       <Download className="mr-2 h-5 w-5" />
                       Download Brochure
@@ -342,9 +342,7 @@ export default function Home() {
                       <div className="font-semibold text-primary">
                         Premium Campus
                       </div>
-                      <div className="text-sm text-gray-600">
-                         Delhi, India
-                      </div>
+                      <div className="text-sm text-gray-600">Delhi, India</div>
                     </div>
                   </div>
                 </div>
@@ -503,7 +501,7 @@ export default function Home() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-accent px-8 py-4 text-lg font-semibold rounded-2xl glass-morphism transition-all duration-300 ultra-interactive-card"
+                className="border-2 border-white/30 text-black hover:bg-white/10 hover:border-accent px-8 py-4 text-lg font-semibold rounded-2xl glass-morphism transition-all duration-300 ultra-interactive-card"
               >
                 <Link href="/courses">
                   <InteractiveIcon>

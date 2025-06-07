@@ -30,7 +30,7 @@ export default function Header() {
             <span className="sr-only">SkyWings Aviation Academy</span>
             <Image
               src="/images/logo.png"
-              alt="SkyWings Logo"
+              alt="gts Logo"
               width={180}
               height={50}
               className="h-12 w-auto"

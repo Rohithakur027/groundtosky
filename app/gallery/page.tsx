@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface GalleryImage {
-  id: string
-  src: string
-  alt: string
-  category: string
-  description: string
+  id: string;
+  src: string;
+  alt: string;
+  category: string;
+  description: string;
 }
 
 const galleryImages: GalleryImage[] = [
@@ -72,51 +72,61 @@ const galleryImages: GalleryImage[] = [
     category: "Facilities",
     description: "Realistic aircraft cabin for practical training",
   },
-]
+];
 
 export default function GalleryPage() {
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
-  const [selectedIndex, setSelectedIndex] = useState<number>(0)
-  const [currentCategory, setCurrentCategory] = useState<string>("all")
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [currentCategory, setCurrentCategory] = useState<string>("all");
 
-  const categories = ["all", "Training", "Events", "Facilities", "Campus"]
+  const categories = ["all", "Training", "Events", "Facilities", "Campus"];
 
   const filteredImages =
-    currentCategory === "all" ? galleryImages : galleryImages.filter((img) => img.category === currentCategory)
+    currentCategory === "all"
+      ? galleryImages
+      : galleryImages.filter((img) => img.category === currentCategory);
 
   const handleImageClick = (image: GalleryImage, index: number) => {
-    setSelectedImage(image)
-    setSelectedIndex(index)
-  }
+    setSelectedImage(image);
+    setSelectedIndex(index);
+  };
 
   const handlePrevImage = () => {
     if (selectedIndex > 0) {
-      const newIndex = selectedIndex - 1
-      setSelectedImage(filteredImages[newIndex])
-      setSelectedIndex(newIndex)
+      const newIndex = selectedIndex - 1;
+      setSelectedImage(filteredImages[newIndex]);
+      setSelectedIndex(newIndex);
     }
-  }
+  };
 
   const handleNextImage = () => {
     if (selectedIndex < filteredImages.length - 1) {
-      const newIndex = selectedIndex + 1
-      setSelectedImage(filteredImages[newIndex])
-      setSelectedIndex(newIndex)
+      const newIndex = selectedIndex + 1;
+      setSelectedImage(filteredImages[newIndex]);
+      setSelectedIndex(newIndex);
     }
-  }
+  };
 
   return (
     <div className="container px-4 py-12 md:px-6 md:py-24">
       <div className="text-center mb-16">
-        <Badge className="mb-4 bg-primary/10 text-primary border-0">Our Gallery</Badge>
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary">Life at SkyWings Academy</h1>
+        <Badge className="mb-4 bg-primary/10 text-primary border-0">
+          Our Gallery
+        </Badge>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
+          Life at Ground to sky Academy
+        </h1>
         <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-          Explore our vibrant campus life, world-class facilities, and memorable moments from training sessions and
-          events.
+          Explore our vibrant campus life, world-class facilities, and memorable
+          moments from training sessions and events.
         </p>
       </div>
 
-      <Tabs value={currentCategory} onValueChange={setCurrentCategory} className="w-full">
+      <Tabs
+        value={currentCategory}
+        onValueChange={setCurrentCategory}
+        className="w-full"
+      >
         <div className="flex justify-center mb-12">
           <TabsList className="bg-gray-100 p-1 rounded-full">
             {categories.map((category) => (
@@ -147,8 +157,12 @@ export default function GalleryPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <div>
-                    <Badge className="mb-2 bg-accent text-white border-0 text-xs">{image.category}</Badge>
-                    <h3 className="text-white font-medium text-sm">{image.alt}</h3>
+                    <Badge className="mb-2 bg-accent text-white border-0 text-xs">
+                      {image.category}
+                    </Badge>
+                    <h3 className="text-white font-medium text-sm">
+                      {image.alt}
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -157,7 +171,10 @@ export default function GalleryPage() {
         </TabsContent>
       </Tabs>
 
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+      <Dialog
+        open={!!selectedImage}
+        onOpenChange={() => setSelectedImage(null)}
+      >
         <DialogContent className="max-w-5xl p-0 overflow-hidden bg-black/95 backdrop-blur-lg border-0">
           {selectedImage && (
             <div className="relative">
@@ -179,9 +196,15 @@ export default function GalleryPage() {
               </div>
 
               <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-6 backdrop-blur-sm">
-                <Badge className="mb-2 bg-accent text-white border-0">{selectedImage.category}</Badge>
-                <h3 className="text-lg font-medium text-white mb-2">{selectedImage.alt}</h3>
-                <p className="text-sm text-white/80">{selectedImage.description}</p>
+                <Badge className="mb-2 bg-accent text-white border-0">
+                  {selectedImage.category}
+                </Badge>
+                <h3 className="text-lg font-medium text-white mb-2">
+                  {selectedImage.alt}
+                </h3>
+                <p className="text-sm text-white/80">
+                  {selectedImage.description}
+                </p>
               </div>
 
               {selectedIndex > 0 && (
@@ -208,5 +231,5 @@ export default function GalleryPage() {
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }

@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
         <div className="flex flex-col min-h-screen relative">
-          <AviationGraphics />
+          {/* <AviationGraphics /> */}
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />

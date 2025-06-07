@@ -67,7 +67,7 @@ export default function BlogPage({ params }: BlogPageProps) {
         <div className="mt-16 text-center">
           <div className="bg-gray-50 rounded-lg p-8">
             <h3 className="text-2xl font-bold mb-4 text-primary">Ready to Start Your Journey?</h3>
-            <p className="text-gray-600 mb-6">Join SkyWings Academy and turn your aviation dreams into reality.</p>
+            <p className="text-gray-600 mb-6">Join ground to sky Academy and turn your aviation dreams into reality.</p>
             <Button asChild size="lg" className="bg-accent hover:bg-accent/90">
               <Link href="/apply">Apply Now</Link>
             </Button>

@@ -19,10 +19,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "SkyWings Aviation Academy | Premium Aviation & Hospitality Training",
+  title:
+    "Ground to sky Aviation Academy | Premium Aviation & Hospitality Training",
   description:
-    "Join SkyWings Aviation Academy for world-class Air Hostess and Hospitality training. 100% placement guarantee with top airlines and hotels. Premium aviation education since 2010.",
-  
+    "Join Ground to sky  Aviation Academy for world-class Air Hostess and Hospitality training. 100% placement guarantee with top airlines and hotels. Premium aviation education since 2010.",
 };
 
 export default function RootLayout({

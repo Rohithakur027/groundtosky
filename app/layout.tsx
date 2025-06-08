@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "SkyWings Aviation Academy | Premium Aviation & Hospitality Training",
   description:
     "Join SkyWings Aviation Academy for world-class Air Hostess and Hospitality training. 100% placement guarantee with top airlines and hotels. Premium aviation education since 2010.",
-  generator: "v0.dev",
+  
 };
 
 export default function RootLayout({

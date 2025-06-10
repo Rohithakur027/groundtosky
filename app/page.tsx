@@ -1,19 +1,11 @@
 "use client";
 
 import type React from "react";
-import airhostess from "@/public/images/airhostess.jpg";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import {
   Award,
@@ -34,8 +26,9 @@ import {
 import PlacementCard from "@/components/cards/placement-card";
 import FreeCounselingPopup from "@/components/free-counseling-popup";
 import { placements } from "@/data/placements";
+import BrochureDownloadDialog from "@/components/cards/download-pdf";
 
-// Create local components to avoid import issues
+// local components to avoid import issues
 const AviationGraphics = () => {
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -185,35 +178,21 @@ export default function Home() {
                   </Link>
                 </Button>
 
-                <Dialog open={isBrochureOpen} onOpenChange={setIsBrochureOpen}>
-                  <DialogTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-accent px-8 py-6 text-lg font-semibold rounded-2xl transition-all duration-300"
-                    >
-                      <Download className="mr-2 h-5 w-5" />
-                      Download Brochure
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-md">
-                    <DialogHeader>
-                      <DialogTitle className="text-primary gradient-text">
-                        Download Our Premium Brochure
-                      </DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                      <p className="text-gray-600">
-                        Get detailed information about our courses, facilities,
-                        placement records, and success stories.
-                      </p>
-                      <Button className="w-full bg-gradient-to-r from-accent to-secondary hover:from-accent-600 hover:to-secondary-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                        <Download className="mr-2 h-4 w-4" />
-                        Download PDF Brochure
-                      </Button>
-                    </div>
-                  </DialogContent>
-                </Dialog>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-accent px-8 py-6 text-lg font-semibold rounded-2xl transition-all duration-300"
+                  onClick={() => setIsBrochureOpen(true)}
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Brochure
+                </Button>
+
+                {/* Render the BrochureDownloadDialog component */}
+                <BrochureDownloadDialog
+                  isOpen={isBrochureOpen}
+                  onOpenChange={setIsBrochureOpen}
+                />
               </div>
 
               {/* Simple Trust Indicators */}

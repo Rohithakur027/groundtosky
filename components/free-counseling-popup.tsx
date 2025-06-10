@@ -1,61 +1,64 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Badge } from "@/components/ui/badge"
-import { X, Phone, Mail, User, GraduationCap, CheckCircle } from "lucide-react"
+import type React from "react";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { X, Phone, Mail, User, GraduationCap, CheckCircle } from "lucide-react";
 
 const FreeCounselingPopup = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
     course: "",
     message: "",
-  })
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsOpen(true)
-    }, 5000) // Show popup after 5 seconds
+      setIsOpen(true);
+    }, 5000); // Show popup after 5 seconds
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 3000))
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    setIsSubmitting(false)
-    setIsSuccess(true)
+    setIsSubmitting(false);
+    setIsSuccess(true);
 
     // Auto close after success
     setTimeout(() => {
-      setIsOpen(false)
-      setIsSuccess(false)
-      setFormData({ name: "", email: "", phone: "", course: "", message: "" })
-    }, 2000)
-  }
+      setIsOpen(false);
+      setIsSuccess(false);
+      setFormData({ name: "", phone: "", course: "", message: "" });
+    }, 2000);
+  };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -93,13 +96,32 @@ const FreeCounselingPopup = () => {
             {/* Airplane */}
             <div className="relative z-20">
               <div className="airplane-flight">
-                <svg width="80" height="60" viewBox="0 0 80 60" className="text-white drop-shadow-lg">
+                <svg
+                  width="80"
+                  height="60"
+                  viewBox="0 0 80 60"
+                  className="text-white drop-shadow-lg"
+                >
                   {/* Airplane Body */}
                   <ellipse cx="40" cy="30" rx="25" ry="4" fill="currentColor" />
 
                   {/* Wings */}
-                  <ellipse cx="35" cy="30" rx="15" ry="2" fill="currentColor" className="animate-wing-flap" />
-                  <ellipse cx="45" cy="30" rx="15" ry="2" fill="currentColor" className="animate-wing-flap" />
+                  <ellipse
+                    cx="35"
+                    cy="30"
+                    rx="15"
+                    ry="2"
+                    fill="currentColor"
+                    className="animate-wing-flap"
+                  />
+                  <ellipse
+                    cx="45"
+                    cy="30"
+                    rx="15"
+                    ry="2"
+                    fill="currentColor"
+                    className="animate-wing-flap"
+                  />
 
                   {/* Tail */}
                   <polygon points="15,30 20,25 20,35" fill="currentColor" />
@@ -110,7 +132,13 @@ const FreeCounselingPopup = () => {
                   <circle cx="55" cy="30" r="2" fill="#06b6d4" opacity="0.8" />
 
                   {/* Propeller */}
-                  <circle cx="65" cy="30" r="1" fill="currentColor" className="animate-spin" />
+                  <circle
+                    cx="65"
+                    cy="30"
+                    r="1"
+                    fill="currentColor"
+                    className="animate-spin"
+                  />
                   <line
                     x1="63"
                     y1="30"
@@ -128,8 +156,12 @@ const FreeCounselingPopup = () => {
 
               {/* Loading Text */}
               <div className="text-center mt-8">
-                <div className="text-white font-bold text-lg mb-2">Taking Off...</div>
-                <div className="text-white/80 text-sm">Processing your counseling request</div>
+                <div className="text-white font-bold text-lg mb-2">
+                  Taking Off...
+                </div>
+                <div className="text-white/80 text-sm">
+                  Processing your counseling request
+                </div>
               </div>
             </div>
           </div>
@@ -141,7 +173,9 @@ const FreeCounselingPopup = () => {
             <div className="text-center text-white">
               <CheckCircle className="h-16 w-16 mx-auto mb-4 animate-bounce" />
               <h3 className="text-xl font-bold mb-2">Request Submitted!</h3>
-              <p className="text-sm opacity-90">We'll contact you within 24 hours</p>
+              <p className="text-sm opacity-90">
+                We'll contact you within 24 hours
+              </p>
             </div>
           </div>
         )}
@@ -159,14 +193,22 @@ const FreeCounselingPopup = () => {
           <Badge className="mx-auto mb-2 bg-gradient-to-r from-accent to-secondary text-white border-0">
             🎓 Free Counseling
           </Badge>
-          <CardTitle className="text-xl font-bold gradient-text">Get Expert Career Guidance</CardTitle>
-          <p className="text-sm text-gray-600">Speak with our aviation experts and discover your perfect career path</p>
+          <CardTitle className="text-xl font-bold gradient-text">
+            Get Expert Career Guidance
+          </CardTitle>
+          <p className="text-sm text-gray-600">
+            Speak with our aviation experts and discover your perfect career
+            path
+          </p>
         </CardHeader>
 
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-sm font-medium flex items-center gap-2">
+              <Label
+                htmlFor="name"
+                className="text-sm font-medium flex items-center gap-2"
+              >
                 <User className="h-4 w-4 text-accent" />
                 Full Name
               </Label>
@@ -183,24 +225,10 @@ const FreeCounselingPopup = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium flex items-center gap-2">
-                <Mail className="h-4 w-4 text-accent" />
-                Email Address
-              </Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className="border-gray-300 focus:border-accent focus:ring-accent"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-sm font-medium flex items-center gap-2">
+              <Label
+                htmlFor="phone"
+                className="text-sm font-medium flex items-center gap-2"
+              >
                 <Phone className="h-4 w-4 text-accent" />
                 Phone Number
               </Label>
@@ -217,7 +245,10 @@ const FreeCounselingPopup = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="course" className="text-sm font-medium flex items-center gap-2">
+              <Label
+                htmlFor="course"
+                className="text-sm font-medium flex items-center gap-2"
+              >
                 <GraduationCap className="h-4 w-4 text-accent" />
                 Course Interest
               </Label>
@@ -264,13 +295,14 @@ const FreeCounselingPopup = () => {
 
           <div className="mt-4 text-center">
             <p className="text-xs text-gray-500">
-              🔒 Your information is secure and will not be shared with third parties
+              🔒 Your information is secure and will not be shared with third
+              parties
             </p>
           </div>
         </CardContent>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default FreeCounselingPopup
+export default FreeCounselingPopup;

@@ -32,25 +32,6 @@ import BrochureDownloadDialog from "@/components/cards/download-pdf";
 const AviationGraphics = () => {
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Cloud Elements */}
-      <div className="absolute top-10 left-1/4 w-32 h-20 float-element opacity-5">
-        <svg viewBox="0 0 100 60" className="w-full h-full text-primary">
-          <path
-            d="M20 40 Q10 30 20 20 Q30 10 40 20 Q50 10 60 20 Q70 10 80 20 Q90 30 80 40 Z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
-
-      <div className="absolute top-32 right-1/3 w-24 h-16 float-element opacity-5">
-        <svg viewBox="0 0 100 60" className="w-full h-full text-accent">
-          <path
-            d="M15 45 Q5 35 15 25 Q25 15 35 25 Q45 15 55 25 Q65 15 75 25 Q85 35 75 45 Z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
-
       {/* Dotted Flight Path */}
       <div className="absolute inset-0">
         <svg className="w-full h-full">
@@ -76,18 +57,7 @@ const AviationGraphics = () => {
         </svg>
       </div>
 
-      {/* Pulsing Radar */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div className="w-32 h-32 rounded-full border border-accent/10 animate-pulse-glow" />
-        <div
-          className="absolute inset-4 rounded-full border border-accent/20 animate-pulse-glow"
-          style={{ animationDelay: "0.5s" }}
-        />
-        <div
-          className="absolute inset-8 rounded-full border border-accent/30 animate-pulse-glow"
-          style={{ animationDelay: "1s" }}
-        />
-      </div>
+    
     </div>
   );
 };
@@ -134,13 +104,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="/images/hero-aviation.jpg"
-            alt="Aviation training"
-            fill
-            className="object-cover"
-            priority
-          />
+        <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="w-full h-full object-cover"
+    >
+      <source src="/videos/take-off.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/60"></div>
         </div>
 
